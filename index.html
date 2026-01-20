@@ -8,6 +8,7 @@
     <!-- External Frameworks -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <!-- Bubbly Cartoon Font & Retro Mono Font -->
     <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
     
     <style>
@@ -75,15 +76,15 @@
             filter: brightness(1.05);
         }
 
-        /* New Hero Logo Style - Clear, Uncovered, and Bold */
+        /* Hero Logo Style */
         .hero-logo-main {
-            width: 450px; /* Bigger and Bolder */
+            width: 450px; 
             height: auto;
             margin: 0 auto 2rem auto;
             display: block;
             position: relative;
-            z-index: 20; /* In front of background */
-            filter: drop-shadow(10px 10px 0px var(--brown-text)); /* High-impact shadow */
+            z-index: 20; 
+            filter: drop-shadow(10px 10px 0px var(--brown-text));
             animation: heroBounce 4s ease-in-out infinite;
         }
 
@@ -120,6 +121,16 @@
             width: 100%;
             height: auto;
         }
+
+        /* Contract Address Styling */
+        .ca-box {
+            word-break: break-all;
+            background: rgba(45, 27, 14, 0.05);
+            padding: 12px;
+            border-radius: 8px;
+            display: inline-block;
+            border: 2px dashed var(--brown-text);
+        }
     </style>
 </head>
 <body class="antialiased overflow-x-hidden">
@@ -131,16 +142,14 @@
     <nav class="p-6 border-b-8 border-double border-brown-text bg-white sticky top-0 z-50">
         <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
             <div class="flex items-center gap-4">
-                <!-- NAV LOGO: Clean and Big -->
                 <img src="images/logo.png" alt="DDCT Logo" class="h-20 w-20 img-natural">
                 <span class="font-bold text-brown-text text-sm tracking-tighter uppercase">DDCT World</span>
             </div>
             
             <div class="flex gap-8 font-bold text-xs uppercase tracking-widest">
-                <a href="https://dexscreener.com/solana/ckmywfrnkcngawbvgf9oizjudamcaxwjwtzish6j81ue" target="_blank" class="hover:text-orange-400 transition text-brown-text">Chart</a>
-                <!-- ORANGE TEXT FOR X COMMUNITY -->
-                <a href="https://x.com/i/communities/2012789256092106934" target="_blank" class="text-orange-400 hover:brightness-110 transition">Community</a>
-                <a href="#history" class="hover:text-orange-400 transition text-brown-text">History</a>
+                <a href="https://dexscreener.com/solana/ckmywfrnkcngawbvgf9oizjudamcaxwjwtzish6j81ue" target="_blank" class="hover:text-orange-400 transition text-brown-text font-black">Chart</a>
+                <a href="https://x.com/i/communities/2012789256092106934" target="_blank" class="text-orange-400 hover:brightness-110 transition font-black">Community</a>
+                <a href="#history" class="hover:text-orange-400 transition text-brown-text font-black">History</a>
             </div>
 
             <a href="https://dexscreener.com/solana/ckmywfrnkcngawbvgf9oizjudamcaxwjwtzish6j81ue" target="_blank" class="btn-cartoon !py-2 !px-6 !text-sm">
@@ -152,7 +161,6 @@
     <!-- Hero Section -->
     <header class="max-w-7xl mx-auto px-6 py-32 text-center relative">
         
-        <!-- LOGO IS NOW ABOVE THE TITLE - CLEAR & UNCOVERED -->
         <img src="images/logo.png" alt="DDCT Master Logo" class="hero-logo-main">
 
         <div class="relative z-10">
@@ -163,10 +171,14 @@
             </h1>
             
             <div class="max-w-3xl mx-auto bg-stone-50 border-4 border-double border-brown-text p-10 mb-14 shadow-2xl">
-                <p class="text-xl md:text-2xl font-bold leading-relaxed text-stone-800">
+                <p class="text-xl md:text-2xl font-bold leading-relaxed text-stone-800 mb-6">
                     The legendary Bitcointalk relic has arrived on-chain. <br>
                     <span class="text-orange-400 italic font-black">Sit down, shut up, and enjoy the wood.</span>
                 </p>
+                
+                <div class="ca-box">
+                    <span class="font-bold text-brown-text uppercase">CA: A8cXjeiqsjnHjutKu7AABDFcvnCAY38oyw5dSRqqpump</span>
+                </div>
             </div>
 
             <div class="flex flex-col sm:flex-row justify-center gap-10">
@@ -192,11 +204,14 @@
                 <div>
                     <h2 class="cartoon-header text-5xl mb-8">The Story</h2>
                     <div class="space-y-6 text-lg font-semibold leading-relaxed text-stone-700">
-                        <p>In 2011, while the world was discovering Bitcoin, one pioneer used their gains to create something permanent. </p>
-                        <p>This wasn't just furniture—it was a statement of freedom. Carved from wood and etched into internet history.</p>
+                        <p>In 2011, while the world was discovering Bitcoin, one pioneer used their gains to create something permanent.</p>
+                        
+                        <p>The dog dick coffee table reigns as Buttcoin's most infamous legend: an early Bitcoin bro's absurd splurge on a custom table with a dog dick upon it's surface, immortalized in r/Buttcoin lore as the 'Dog Dick Coffee Table' representing peak crypto degeneracy.</p>
+                        
                         <div class="bg-white p-6 border-4 border-brown-text shadow-lg italic">
-                            "Once discovered, Buttcoin members shared it amoungst themselves within Bitcoinforum and hence forth, the legendary lore of the dog dick coffee table was born."
+                            "This wasn't just furniture—it was a statement of freedom. Carved from wood and etched into internet history."
                         </div>
+                        
                         <p class="font-bold text-orange-400 uppercase tracking-widest">"Zero Regrets."</p>
                     </div>
                 </div>
@@ -230,11 +245,10 @@
 
     <!-- Footer -->
     <footer class="bg-white border-t-8 border-double border-brown-text p-20 text-center">
-        <!-- Smaller Font "Community Takeover" -->
         <div class="cartoon-header text-xl md:text-3xl mb-8 tracking-widest uppercase" style="text-shadow: 4px 4px 0px var(--brown-text); -webkit-text-stroke: 1px var(--brown-text);">Community Takeover</div>
         
         <p class="text-md font-black opacity-80 mb-12 max-w-2xl mx-auto uppercase tracking-widest leading-loose">
-            $DDCT is a community project inspired by internet history. <br>No financial value. 100% Wood.
+            $DDCT is a community project inspired by internet history. <br>No financial value. 100% Buttcoin dog dick lore.
         </p>
 
         <div class="flex justify-center gap-16 mb-20">
