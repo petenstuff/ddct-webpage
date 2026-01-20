@@ -8,7 +8,6 @@
     <!-- External Frameworks -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <!-- Bubbly Cartoon Font & Retro Mono Font -->
     <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
     
     <style>
@@ -76,24 +75,21 @@
             filter: brightness(1.05);
         }
 
-        /* Hero Logo Watermark Animation */
-        @keyframes float {
-            0%, 100% { transform: translate(-50%, -50%) rotate(0deg) scale(1); }
-            50% { transform: translate(-50%, -55%) rotate(5deg) scale(1.1); }
+        /* New Hero Logo Style - Clear, Uncovered, and Bold */
+        .hero-logo-main {
+            width: 450px; /* Bigger and Bolder */
+            height: auto;
+            margin: 0 auto 2rem auto;
+            display: block;
+            position: relative;
+            z-index: 20; /* In front of background */
+            filter: drop-shadow(10px 10px 0px var(--brown-text)); /* High-impact shadow */
+            animation: heroBounce 4s ease-in-out infinite;
         }
 
-        .bg-logo-behind {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 800px;
-            height: 800px;
-            opacity: 0.25; 
-            z-index: -1;
-            animation: float 10s ease-in-out infinite;
-            filter: drop-shadow(0 0 20px rgba(255, 179, 71, 0.2));
-            pointer-events: none;
+        @keyframes heroBounce {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(2deg); }
         }
 
         /* Solid Orange Dividers */
@@ -128,21 +124,21 @@
 </head>
 <body class="antialiased overflow-x-hidden">
 
-    <!-- Background Animation Layer -->
+    <!-- Background Layer (Falling Blocks) -->
     <div class="fixed inset-0 z-[-2] overflow-hidden" id="blockBg"></div>
 
     <!-- Navigation -->
     <nav class="p-6 border-b-8 border-double border-brown-text bg-white sticky top-0 z-50">
         <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
             <div class="flex items-center gap-4">
-                <!-- TOP LEFT LOGO: BIG & NO FRAME -->
-                <img src="images/logo.png" alt="DDCT Logo" class="h-24 w-24 img-natural">
+                <!-- NAV LOGO: Clean and Big -->
+                <img src="images/logo.png" alt="DDCT Logo" class="h-20 w-20 img-natural">
                 <span class="font-bold text-brown-text text-sm tracking-tighter uppercase">DDCT World</span>
             </div>
             
             <div class="flex gap-8 font-bold text-xs uppercase tracking-widest">
                 <a href="https://dexscreener.com/solana/ckmywfrnkcngawbvgf9oizjudamcaxwjwtzish6j81ue" target="_blank" class="hover:text-orange-400 transition text-brown-text">Chart</a>
-                <!-- ORANGE TEXT FOR X COMMUNITY NAV -->
+                <!-- ORANGE TEXT FOR X COMMUNITY -->
                 <a href="https://x.com/i/communities/2012789256092106934" target="_blank" class="text-orange-400 hover:brightness-110 transition">Community</a>
                 <a href="#history" class="hover:text-orange-400 transition text-brown-text">History</a>
             </div>
@@ -154,13 +150,13 @@
     </nav>
 
     <!-- Hero Section -->
-    <header class="max-w-7xl mx-auto px-6 py-40 text-center relative">
+    <header class="max-w-7xl mx-auto px-6 py-32 text-center relative">
         
-        <!-- LARGE WATERMARK LOGO -->
-        <img src="images/logo.png" alt="" class="bg-logo-behind">
+        <!-- LOGO IS NOW ABOVE THE TITLE - CLEAR & UNCOVERED -->
+        <img src="images/logo.png" alt="DDCT Master Logo" class="hero-logo-main">
 
         <div class="relative z-10">
-            <p class="font-bold text-stone-400 text-xs mb-6 tracking-[0.4em] uppercase">Player 1: The Wooden Legacy</p>
+            <p class="font-bold text-stone-400 text-xs mb-6 tracking-[0.4em] uppercase">The Legendary Record</p>
             <h1 class="cartoon-header text-6xl md:text-9xl mb-12">
                 DOG DICK <br>
                 <span style="color: #fff; -webkit-text-stroke: 2px var(--brown-text); text-shadow: 6px 6px 0px var(--brown-text);">COFFEE TABLE</span>
@@ -177,19 +173,9 @@
                 <a href="https://dexscreener.com/solana/ckmywfrnkcngawbvgf9oizjudamcaxwjwtzish6j81ue" target="_blank" class="btn-cartoon">
                     View Chart 📈
                 </a>
-                <!-- ORANGE TEXT FOR JOIN X BUTTON -->
                 <a href="https://x.com/i/communities/2012789256092106934" target="_blank" class="btn-cartoon !bg-white !text-orange-400">
                     Join The X 🦴
                 </a>
-            </div>
-        </div>
-
-        <div class="max-w-2xl mx-auto mt-24 relative z-10">
-            <div class="gold-frame inline-block rotate-[-1deg]">
-                <img src="images/hero-table.png" alt="Artifact" class="img-natural">
-                <div class="mt-6 font-bold text-xs border-t-2 border-dashed border-brown-text pt-6 uppercase tracking-widest text-brown-text">
-                    Exhibit: The Original Commission
-                </div>
             </div>
         </div>
     </header>
@@ -220,7 +206,7 @@
 
     <div class="divider-bar"></div>
 
-    <!-- Gallery Section -->
+    <!-- Collection Section -->
     <section class="max-w-7xl mx-auto px-6 py-24">
         <div class="text-center mb-20">
             <h2 class="cartoon-header text-6xl mb-4">Dog Dick Collection</h2>
@@ -244,7 +230,8 @@
 
     <!-- Footer -->
     <footer class="bg-white border-t-8 border-double border-brown-text p-20 text-center">
-        <div class="cartoon-header text-2xl md:text-4xl mb-8 tracking-widest uppercase">Community Takeover</div>
+        <!-- Smaller Font "Community Takeover" -->
+        <div class="cartoon-header text-xl md:text-3xl mb-8 tracking-widest uppercase" style="text-shadow: 4px 4px 0px var(--brown-text); -webkit-text-stroke: 1px var(--brown-text);">Community Takeover</div>
         
         <p class="text-md font-black opacity-80 mb-12 max-w-2xl mx-auto uppercase tracking-widest leading-loose">
             $DDCT is a community project inspired by internet history. <br>No financial value. 100% Wood.
@@ -254,7 +241,6 @@
             <a href="https://dexscreener.com/solana/ckmywfrnkcngawbvgf9oizjudamcaxwjwtzish6j81ue" target="_blank" class="text-5xl hover:scale-110 transition text-brown-text hover:text-orange-400">
                 <i class="fa-solid fa-chart-line"></i>
             </a>
-            <!-- FOOTER X ICON ORANGE -->
             <a href="https://x.com/i/communities/2012789256092106934" target="_blank" class="text-5xl hover:scale-110 transition text-orange-400 hover:brightness-110">
                 <i class="fa-brands fa-x-twitter"></i>
             </a>
@@ -263,7 +249,7 @@
         <p class="font-bold text-brown-text opacity-40 uppercase text-[10px] tracking-tighter">© 2026 The Wooden Table Foundation</p>
     </footer>
 
-    <!-- Background Logic -->
+    <!-- Falling Blocks Logic -->
     <script>
         const colors = ['#FFB347', '#2d1b0e', '#D4AF37', '#ffffff'];
         const bg = document.getElementById('blockBg');
