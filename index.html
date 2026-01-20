@@ -138,11 +138,10 @@
     <!-- Background Layer (Falling Blocks) -->
     <div class="fixed inset-0 z-[-2] overflow-hidden" id="blockBg"></div>
 
-    <!-- Navigation (Thinner: p-3 instead of p-6) -->
+    <!-- Navigation -->
     <nav class="p-3 border-b-8 border-double border-brown-text bg-white">
         <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
             <div class="flex items-center gap-4">
-                <!-- LOGO: Smaller (h-14 instead of h-24) -->
                 <img src="images/logo.png" alt="DDCT Logo" class="h-14 w-14 img-natural">
                 <span class="font-bold text-brown-text text-sm tracking-tighter uppercase">DDCT World</span>
             </div>
@@ -178,7 +177,7 @@
                 </p>
                 
                 <div class="ca-box">
-                    <span class="font-bold text-brown-text uppercase">CA: A8cXjeiqsjnHjutKu7AABDFcvnCAY38oyw5dSRqqpump</span>
+                    <span class="font-bold text-brown-text uppercase text-sm">CA: A8cXjeiqsjnHjutKu7AABDFcvnCAY38oyw5dSRqqpump</span>
                 </div>
             </div>
 
@@ -198,11 +197,20 @@
     <!-- History Section -->
     <section id="history" class="py-24 px-6 bg-stone-50">
         <div class="max-w-6xl mx-auto">
-            <div class="grid md:grid-cols-2 gap-20 items-center">
-                <div class="gold-frame rotate-1">
-                    <img src="images/lore-archive.jpg" alt="Forum Archive" class="img-natural">
+            <div class="grid md:grid-cols-2 gap-20 items-start">
+                
+                <!-- STACKED IMAGES IN GOLD FRAMES -->
+                <div class="flex flex-col gap-10">
+                    <div class="gold-frame rotate-1">
+                        <img src="images/lore-archive.jpg" alt="Forum Archive" class="img-natural">
+                    </div>
+                    <!-- HERO TABLE ADDED BELOW LORE ARCHIVE -->
+                    <div class="gold-frame rotate-[-1deg]">
+                        <img src="images/hero-table.png" alt="Historical Artifact" class="img-natural">
+                    </div>
                 </div>
-                <div>
+
+                <div class="sticky top-24">
                     <h2 class="cartoon-header text-5xl mb-8">The Story</h2>
                     <div class="space-y-6 text-lg font-semibold leading-relaxed text-stone-700">
                         <p>In 2011, while the world was discovering Bitcoin, one pioneer used their gains to create something permanent.</p>
@@ -264,7 +272,7 @@
         <p class="font-bold text-brown-text opacity-40 uppercase text-[10px] tracking-tighter">© 2026 The Wooden Table Foundation</p>
     </footer>
 
-    <!-- Background Logic -->
+    <!-- Falling Blocks Logic -->
     <script>
         const colors = ['#FFB347', '#2d1b0e', '#D4AF37', '#ffffff'];
         const bg = document.getElementById('blockBg');
