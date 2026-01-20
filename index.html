@@ -8,238 +8,246 @@
     <!-- External Frameworks -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Bubbly Cartoon Font & Retro Mono Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --dark-wood: #2d1b0e;
-            --mid-wood: #5c3d2e;
-            --light-wood: #b85c38;
-            --paper: #f4f1ea;
-            --oak: #e0ac69;
+            --brown-text: #2d1b0e;
+            --light-orange: #FFB347; /* Sunset Orange */
+            --bg-white: #ffffff;
+            --gold-border: #D4AF37;
+            --gold-light: #FFD700;
         }
 
-        /* Base Styles */
         body {
-            background-color: var(--dark-wood);
-            color: var(--paper);
+            background-color: var(--bg-white);
+            color: var(--brown-text);
             font-family: 'Space Mono', monospace;
             background-image: 
-                linear-gradient(rgba(45, 27, 14, 0) 50%, rgba(0, 0, 0, 0.1) 50%),
-                linear-gradient(90deg, rgba(224, 172, 105, 0.02), rgba(224, 172, 105, 0.01), rgba(224, 172, 105, 0.02));
+                linear-gradient(rgba(45, 27, 14, 0.03) 50%, rgba(0, 0, 0, 0) 50%),
+                linear-gradient(90deg, rgba(212, 175, 55, 0.02), rgba(212, 175, 55, 0), rgba(212, 175, 55, 0.02));
             background-size: 100% 4px, 4px 100%;
             scroll-behavior: smooth;
         }
 
-        .pixel-font { font-family: 'Press Start 2P', cursive; }
-
-        /* UI Containers */
-        .wood-border {
-            border: 4px solid var(--paper);
-            box-shadow: 
-                0 0 0 4px var(--dark-wood),
-                0 0 0 8px var(--oak),
-                8px 8px 0 0 rgba(0,0,0,0.5);
-            background: var(--mid-wood);
-        }
-
-        /* Buttons */
-        .btn-wood {
-            display: inline-block;
-            padding: 16px 32px;
-            background: var(--oak);
-            color: var(--dark-wood);
-            font-weight: bold;
-            border: 4px solid var(--paper);
-            box-shadow: -4px -4px 0 0 var(--paper) inset, 4px 4px 0 0 rgba(0,0,0,0.3) inset;
-            transition: all 0.1s;
-            cursor: pointer;
+        /* Cartoon Heading Style */
+        .cartoon-header {
+            font-family: 'Luckiest Guy', cursive;
+            color: var(--light-orange);
+            text-shadow: 6px 6px 0px var(--brown-text);
+            -webkit-text-stroke: 2px var(--brown-text);
+            letter-spacing: 2px;
             text-transform: uppercase;
         }
 
-        .btn-wood:hover { transform: scale(1.03); background: #f1c27d; }
-        .btn-wood:active { transform: scale(0.97); box-shadow: 4px 4px 0px var(--paper) inset; }
+        /* Golden Frame Styling */
+        .gold-frame {
+            border: 8px solid var(--gold-border);
+            outline: 3px solid var(--brown-text);
+            box-shadow: 
+                inset 0 0 0 3px var(--gold-light),
+                inset 0 0 20px rgba(0,0,0,0.1),
+                8px 8px 0 0 var(--brown-text);
+            background: #ffffff;
+            padding: 10px;
+            transition: all 0.2s ease;
+        }
+        
+        .gold-frame:hover {
+            transform: scale(1.03);
+            box-shadow: 12px 12px 0 0 var(--brown-text);
+        }
 
-        /* Image Display - Original Shading/Color */
+        /* Buttons */
+        .btn-cartoon {
+            display: inline-block;
+            padding: 18px 36px;
+            background: var(--light-orange);
+            color: white;
+            font-family: 'Luckiest Guy', cursive;
+            font-size: 1.25rem;
+            border: 3px solid var(--brown-text);
+            box-shadow: 5px 5px 0px var(--brown-text);
+            transition: all 0.1s;
+            cursor: pointer;
+        }
+
+        .btn-cartoon:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 7px 7px 0px var(--brown-text);
+            filter: brightness(1.05);
+        }
+
         .img-natural {
             display: block;
             width: 100%;
             height: auto;
-            image-rendering: auto; /* Ensures original quality and shading */
-            filter: none !important; /* Forces no filters */
+            image-rendering: auto;
         }
 
-        /* Background Animation */
-        @keyframes fall {
-            0% { transform: translateY(-100vh) rotate(0deg); }
-            100% { transform: translateY(110vh) rotate(360deg); }
+        /* Hero Logo Watermark Animation */
+        @keyframes float {
+            0%, 100% { transform: translate(-50%, -50%) rotate(0deg) scale(1); }
+            50% { transform: translate(-50%, -55%) rotate(5deg) scale(1.05); }
         }
-        .wood-block {
+
+        .bg-logo-behind {
             position: absolute;
-            width: 30px; height: 30px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 600px;
             opacity: 0.15;
-            animation: fall 12s linear infinite;
-            border: 2px solid var(--paper);
-            pointer-events: none;
+            z-index: -1;
+            animation: float 10s ease-in-out infinite;
+            filter: blur(2px);
         }
 
-        .divider {
-            height: 12px;
+        .divider-bar {
+            height: 16px;
             background: repeating-linear-gradient(
-                90deg,
-                var(--oak),
-                var(--oak) 20px,
-                var(--paper) 20px,
-                var(--paper) 40px
+                45deg,
+                var(--light-orange),
+                var(--light-orange) 10px,
+                var(--brown-text) 10px,
+                var(--brown-text) 20px
             );
         }
     </style>
 </head>
 <body class="antialiased overflow-x-hidden">
-    
-    <!-- Animated Background Layer -->
-    <div class="fixed inset-0 z-[-1] overflow-hidden" id="blockBg"></div>
 
     <!-- Navigation -->
-    <nav class="p-6 border-b-8 border-double border-oak bg-[#2d1b0e] sticky top-0 z-50">
+    <nav class="p-6 border-b-8 border-double border-brown-text bg-white sticky top-0 z-50">
         <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
             <div class="flex items-center gap-4">
-                <img src="images/logo.png" alt="DDCT Logo" class="h-10 w-10 img-natural rounded-sm border-2 border-oak">
-                <span class="pixel-font text-[10px] text-oak tracking-tighter uppercase">$DDCT World</span>
+                <img src="images/logo.png" alt="DDCT Logo" class="h-12 w-12 img-natural gold-frame !p-0 !border-4 !outline-2">
+                <span class="font-bold text-brown-text text-sm tracking-tighter uppercase">DDCT World</span>
             </div>
             
-            <div class="flex gap-8 pixel-font text-[10px]">
-                <a href="https://dexscreener.com/solana/ckmywfrnkcngawbvgf9oizjudamcaxwjwtzish6j81ue" target="_blank" class="hover:text-oak transition">Chart</a>
-                <a href="https://x.com/i/communities/2012789256092106934" target="_blank" class="hover:text-oak transition">Community</a>
-                <a href="#history" class="hover:text-oak transition">History</a>
+            <div class="flex gap-8 font-bold text-xs uppercase tracking-widest">
+                <a href="https://dexscreener.com/solana/ckmywfrnkcngawbvgf9oizjudamcaxwjwtzish6j81ue" target="_blank" class="hover:text-orange-400 transition text-brown-text">Chart</a>
+                <a href="https://x.com/i/communities/2012789256092106934" target="_blank" class="hover:text-orange-400 transition text-brown-text">Community</a>
+                <a href="#history" class="hover:text-orange-400 transition text-brown-text">History</a>
             </div>
 
-            <a href="https://dexscreener.com/solana/ckmywfrnkcngawbvgf9oizjudamcaxwjwtzish6j81ue" target="_blank" class="btn-wood text-[10px]">
-                Buy Token
+            <a href="https://dexscreener.com/solana/ckmywfrnkcngawbvgf9oizjudamcaxwjwtzish6j81ue" target="_blank" class="btn-cartoon !py-2 !px-6 !text-sm">
+                BUY $DDCT
             </a>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <header class="max-w-7xl mx-auto px-6 py-24 text-center">
-        <div class="mb-10">
-            <p class="pixel-font text-oak text-[10px] mb-6 tracking-widest uppercase">Established 2011</p>
-            <h1 class="pixel-font text-4xl md:text-6xl mb-10 leading-tight">
+    <header class="max-w-7xl mx-auto px-6 py-32 text-center relative">
+        
+        <!-- LARGE WATERMARK LOGO BEHIND TITLE -->
+        <img src="images/logo.png" alt="" class="bg-logo-behind">
+
+        <div class="relative z-10">
+            <p class="font-bold text-stone-400 text-xs mb-6 tracking-[0.4em] uppercase">Stage 1: The Wooden Legacy</p>
+            <h1 class="cartoon-header text-6xl md:text-9xl mb-12">
                 DOG DICK <br>
-                <span class="text-white">COFFEE TABLE</span>
+                <span style="color: #fff; -webkit-text-stroke: 2px var(--brown-text); text-shadow: 6px 6px 0px var(--brown-text);">COFFEE TABLE</span>
             </h1>
             
-            <div class="max-w-3xl mx-auto bg-white/5 border-4 border-dashed border-oak p-8 mb-12">
-                <p class="text-xl md:text-2xl font-bold leading-relaxed text-[#f4f1ea]">
+            <div class="max-w-3xl mx-auto bg-stone-50 border-4 border-double border-brown-text p-10 mb-14 shadow-2xl">
+                <p class="text-xl md:text-2xl font-bold leading-relaxed text-stone-800">
                     The legendary Bitcointalk relic has arrived on-chain. <br>
-                    <span class="text-oak italic">Sit down, shut up, and enjoy the wood.</span>
+                    <span class="text-orange-400 italic font-black">Sit down, shut up, and enjoy the wood.</span>
                 </p>
             </div>
 
-            <div class="flex flex-col sm:flex-row justify-center gap-8">
-                <a href="https://dexscreener.com/solana/ckmywfrnkcngawbvgf9oizjudamcaxwjwtzish6j81ue" target="_blank" class="btn-wood">
-                    Start Chart
+            <div class="flex flex-col sm:flex-row justify-center gap-10">
+                <a href="https://dexscreener.com/solana/ckmywfrnkcngawbvgf9oizjudamcaxwjwtzish6j81ue" target="_blank" class="btn-cartoon uppercase">
+                    View Chart 📈
                 </a>
-                <a href="https://x.com/i/communities/2012789256092106934" target="_blank" class="btn-wood bg-[#f4f1ea] !text-[#2d1b0e]">
-                    Join Group
+                <a href="https://x.com/i/communities/2012789256092106934" target="_blank" class="btn-cartoon !bg-white !text-brown-text uppercase">
+                    Join The X 🦴
                 </a>
             </div>
         </div>
 
-        <!-- Main Hero Image (Clean) -->
-        <div class="max-w-xl mx-auto mt-20">
-            <div class="wood-border p-4 relative">
-                <img src="images/hero-table.png" alt="The Dog Dick Coffee Table" class="img-natural">
-                <div class="absolute -top-4 -left-4 bg-oak text-dark-wood px-4 py-2 pixel-font text-[10px] text-[#2d1b0e]">
-                    EXHIBIT: 01
+        <!-- Hero Exhibit Image -->
+        <div class="max-w-2xl mx-auto mt-24 relative z-10">
+            <div class="gold-frame inline-block rotate-[-1deg]">
+                <img src="images/hero-table.png" alt="Historical Artifact" class="img-natural">
+                <div class="mt-6 font-bold text-xs border-t-2 border-dashed border-brown-text pt-6 uppercase tracking-widest">
+                    Exhibit: The Original Commission
                 </div>
             </div>
         </div>
     </header>
 
-    <div class="divider"></div>
+    <div class="divider-bar"></div>
 
     <!-- History Section -->
-    <section id="history" class="py-24 px-6">
-        <div class="max-w-5xl mx-auto">
-            <div class="grid md:grid-cols-2 gap-16 items-center">
-                <div class="wood-border p-2">
-                    <img src="images/lore-archive.jpg" alt="Historical Forum Post" class="img-natural">
+    <section id="history" class="py-24 px-6 bg-stone-50">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid md:grid-cols-2 gap-20 items-center">
+                <div class="gold-frame rotate-1">
+                    <img src="images/lore-archive.jpg" alt="Historical Forum Archive" class="img-natural">
                 </div>
                 <div>
-                    <h2 class="pixel-font text-2xl mb-8 text-oak uppercase">The Story</h2>
-                    <div class="space-y-6 text-[#f4f1ea] leading-loose font-medium text-lg">
+                    <h2 class="cartoon-header text-5xl mb-8">The Story</h2>
+                    <div class="space-y-6 text-lg font-semibold leading-relaxed text-stone-700">
                         <p>In 2011, while the world was discovering Bitcoin, one pioneer used their gains to create something permanent. </p>
                         <p>This wasn't just furniture—it was a statement of freedom. Carved from wood and etched into internet history.</p>
-                        <p class="bg-black/20 p-4 border-l-4 border-oak italic">
-                            Once discovered, Buttcoin members shared it amoungst themselves within Bitcoinforum and hence forth, the legendary lore of the dog dick coffee table was born.
-                        </p>
-                        <p class="pixel-font text-xs text-oak">"I HAVE ZERO REGRETS."</p>
+                        <div class="bg-white p-6 border-4 border-brown-text shadow-lg italic">
+                            "Once discovered, Buttcoin members shared it amoungst themselves within Bitcoinforum and hence forth, the legendary lore of the dog dick coffee table was born."
+                        </div>
+                        <p class="font-bold text-orange-400 uppercase tracking-widest">"Zero Regrets."</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <div class="divider"></div>
+    <div class="divider-bar"></div>
 
-    <!-- Collection Section -->
+    <!-- Collection Gallery -->
     <section class="max-w-7xl mx-auto px-6 py-24">
-        <div class="text-center mb-16">
-            <h2 class="pixel-font text-2xl mb-4 underline decoration-paper uppercase">The Collection</h2>
-            <p class="pixel-font text-[10px] text-oak tracking-widest uppercase">Visual Proof</p>
+        <div class="text-center mb-20">
+            <h2 class="cartoon-header text-6xl mb-4">The Wood Pile</h2>
+            <p class="font-bold text-stone-400 tracking-[0.2em] uppercase">Historical Evidence</p>
         </div>
-        <div class="grid grid-cols-2 lg:grid-cols-4 gap-8">
-            <div class="wood-border p-1 group cursor-pointer hover:bg-oak transition-colors">
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-10">
+            <div class="gold-frame rotate-[-2deg]">
                 <img src="images/meme-1.jpg" alt="Meme 1" class="img-natural aspect-square object-cover">
             </div>
-            <div class="wood-border p-1 group cursor-pointer hover:bg-oak transition-colors">
+            <div class="gold-frame rotate-[3deg]">
                 <img src="images/meme-2.jpg" alt="Meme 2" class="img-natural aspect-square object-cover">
             </div>
-            <div class="wood-border p-1 group cursor-pointer hover:bg-oak transition-colors">
+            <div class="gold-frame rotate-[-1deg]">
                 <img src="images/meme-3.jpg" alt="Meme 3" class="img-natural aspect-square object-cover">
             </div>
-            <div class="wood-border p-1 group cursor-pointer hover:bg-oak transition-colors">
+            <div class="gold-frame rotate-[2deg]">
                 <img src="images/meme-4.jpg" alt="Meme 4" class="img-natural aspect-square object-cover">
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-[#2d1b0e] border-t-8 border-double border-paper p-16 text-center">
-        <div class="pixel-font text-3xl md:text-5xl text-white mb-10 tracking-tighter uppercase">Finish Line</div>
+    <footer class="bg-white border-t-8 border-double border-brown-text p-20 text-center">
+        <!-- REPLACED "FINISH!" WITH "COMMUNITY TAKEOVER" AS REQUESTED -->
+        <div class="cartoon-header text-2xl md:text-4xl mb-8 tracking-widest uppercase">Community Takeover</div>
         
-        <p class="text-sm text-paper opacity-70 mb-12 max-w-2xl mx-auto uppercase font-bold tracking-widest">
-            $DDCT is a community project inspired by internet history. No financial value. Just pure buttcoin dog dick coffee table lore.
+        <p class="text-md font-black opacity-80 mb-12 max-w-2xl mx-auto uppercase tracking-widest leading-loose">
+            $DDCT is a community project inspired by internet history. <br>No financial value. Pure Buttcoin lore.
         </p>
 
-        <div class="flex justify-center gap-16 mb-16">
-            <a href="https://dexscreener.com/solana/ckmywfrnkcngawbvgf9oizjudamcaxwjwtzish6j81ue" target="_blank" class="text-4xl hover:text-oak transition">
+        <div class="flex justify-center gap-16 mb-20">
+            <a href="https://dexscreener.com/solana/ckmywfrnkcngawbvgf9oizjudamcaxwjwtzish6j81ue" target="_blank" class="text-5xl hover:scale-110 transition text-brown-text hover:text-orange-400">
                 <i class="fa-solid fa-chart-line"></i>
             </a>
-            <a href="https://x.com/i/communities/2012789256092106934" target="_blank" class="text-4xl hover:text-oak transition">
+            <a href="https://x.com/i/communities/2012789256092106934" target="_blank" class="text-5xl hover:scale-110 transition text-brown-text hover:text-orange-400">
                 <i class="fa-brands fa-x-twitter"></i>
             </a>
         </div>
 
-        <p class="pixel-font text-[8px] text-oak uppercase">© 2026 The Wooden Table Foundation</p>
+        <p class="font-bold text-brown-text opacity-40 uppercase text-[10px] tracking-tighter">© 2026 The Wooden Table Foundation</p>
     </footer>
 
-    <!-- Background Logic -->
-    <script>
-        const colors = ['#2d1b0e', '#5c3d2e', '#b85c38', '#e0ac69', '#f4f1ea'];
-        const bg = document.getElementById('blockBg');
-        
-        for(let i=0; i<25; i++) {
-            const block = document.createElement('div');
-            block.className = 'wood-block';
-            block.style.left = Math.random() * 100 + 'vw';
-            block.style.background = colors[Math.floor(Math.random() * colors.length)];
-            block.style.animationDelay = Math.random() * 12 + 's';
-            block.style.width = (Math.random() * 20 + 20) + 'px';
-            block.style.height = block.style.width;
-            bg.appendChild(block);
-        }
-    </script>
 </body>
 </html>
