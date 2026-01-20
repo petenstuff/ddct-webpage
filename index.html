@@ -138,11 +138,12 @@
     <!-- Background Layer (Falling Blocks) -->
     <div class="fixed inset-0 z-[-2] overflow-hidden" id="blockBg"></div>
 
-    <!-- Navigation (Sticky classes removed so it scrolls away) -->
-    <nav class="p-6 border-b-8 border-double border-brown-text bg-white">
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+    <!-- Navigation (Thinner: p-3 instead of p-6) -->
+    <nav class="p-3 border-b-8 border-double border-brown-text bg-white">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
             <div class="flex items-center gap-4">
-                <img src="images/logo.png" alt="DDCT Logo" class="h-20 w-20 img-natural">
+                <!-- LOGO: Smaller (h-14 instead of h-24) -->
+                <img src="images/logo.png" alt="DDCT Logo" class="h-14 w-14 img-natural">
                 <span class="font-bold text-brown-text text-sm tracking-tighter uppercase">DDCT World</span>
             </div>
             
@@ -152,7 +153,7 @@
                 <a href="#history" class="hover:text-orange-400 transition text-brown-text font-black">History</a>
             </div>
 
-            <a href="https://dexscreener.com/solana/ckmywfrnkcngawbvgf9oizjudamcaxwjwtzish6j81ue" target="_blank" class="btn-cartoon !py-2 !px-6 !text-sm">
+            <a href="https://dexscreener.com/solana/ckmywfrnkcngawbvgf9oizjudamcaxwjwtzish6j81ue" target="_blank" class="btn-cartoon !py-1.5 !px-5 !text-xs">
                 BUY $DDCT
             </a>
         </div>
@@ -186,7 +187,7 @@
                     View Chart 📈
                 </a>
                 <a href="https://x.com/i/communities/2012789256092106934" target="_blank" class="btn-cartoon !bg-white !text-orange-400">
-                    Join The X 🦴
+                    Join The X Bone
                 </a>
             </div>
         </div>
@@ -248,7 +249,7 @@
         <div class="cartoon-header text-xl md:text-3xl mb-8 tracking-widest uppercase" style="text-shadow: 4px 4px 0px var(--brown-text); -webkit-text-stroke: 1px var(--brown-text);">Community Takeover</div>
         
         <p class="text-md font-black opacity-80 mb-12 max-w-2xl mx-auto uppercase tracking-widest leading-loose">
-            $DDCT is a community project inspired by internet history. <br>No financial value. 100% Buttcoin dog dick lore.
+            $DDCT is a community project inspired by internet history. <br>No financial value. 100% Wood.
         </p>
 
         <div class="flex justify-center gap-16 mb-20">
@@ -263,7 +264,7 @@
         <p class="font-bold text-brown-text opacity-40 uppercase text-[10px] tracking-tighter">© 2026 The Wooden Table Foundation</p>
     </footer>
 
-    <!-- Falling Blocks Logic -->
+    <!-- Background Logic -->
     <script>
         const colors = ['#FFB347', '#2d1b0e', '#D4AF37', '#ffffff'];
         const bg = document.getElementById('blockBg');
