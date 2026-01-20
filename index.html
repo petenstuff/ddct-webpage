@@ -14,7 +14,7 @@
     <style>
         :root {
             --brown-text: #2d1b0e;
-            --light-orange: #FFB347; /* Sunset Orange */
+            --light-orange: #FFB347; 
             --bg-white: #ffffff;
             --gold-border: #D4AF37;
             --gold-light: #FFD700;
@@ -24,10 +24,6 @@
             background-color: var(--bg-white);
             color: var(--brown-text);
             font-family: 'Space Mono', monospace;
-            background-image: 
-                linear-gradient(rgba(45, 27, 14, 0.03) 50%, rgba(0, 0, 0, 0) 50%),
-                linear-gradient(90deg, rgba(212, 175, 55, 0.02), rgba(212, 175, 55, 0), rgba(212, 175, 55, 0.02));
-            background-size: 100% 4px, 4px 100%;
             scroll-behavior: smooth;
         }
 
@@ -41,7 +37,7 @@
             text-transform: uppercase;
         }
 
-        /* Golden Frame Styling */
+        /* Golden Frame Styling (For Photos) */
         .gold-frame {
             border: 8px solid var(--gold-border);
             outline: 3px solid var(--brown-text);
@@ -71,6 +67,7 @@
             box-shadow: 5px 5px 0px var(--brown-text);
             transition: all 0.1s;
             cursor: pointer;
+            text-transform: uppercase;
         }
 
         .btn-cartoon:hover {
@@ -79,17 +76,10 @@
             filter: brightness(1.05);
         }
 
-        .img-natural {
-            display: block;
-            width: 100%;
-            height: auto;
-            image-rendering: auto;
-        }
-
         /* Hero Logo Watermark Animation */
         @keyframes float {
             0%, 100% { transform: translate(-50%, -50%) rotate(0deg) scale(1); }
-            50% { transform: translate(-50%, -55%) rotate(5deg) scale(1.05); }
+            50% { transform: translate(-50%, -55%) rotate(5deg) scale(1.1); }
         }
 
         .bg-logo-behind {
@@ -97,39 +87,63 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 600px;
-            height: 600px;
-            opacity: 0.15;
+            width: 800px;
+            height: 800px;
+            opacity: 0.25; 
             z-index: -1;
             animation: float 10s ease-in-out infinite;
-            filter: blur(2px);
+            filter: drop-shadow(0 0 20px rgba(255, 179, 71, 0.2));
+            pointer-events: none;
         }
 
+        /* Solid Orange Dividers */
         .divider-bar {
-            height: 16px;
-            background: repeating-linear-gradient(
-                45deg,
-                var(--light-orange),
-                var(--light-orange) 10px,
-                var(--brown-text) 10px,
-                var(--brown-text) 20px
-            );
+            height: 12px;
+            background-color: var(--light-orange);
+            border-top: 4px solid var(--brown-text);
+            border-bottom: 4px solid var(--brown-text);
+        }
+
+        /* Falling Background Blocks */
+        @keyframes fall {
+            0% { transform: translateY(-100vh) rotate(0deg); }
+            100% { transform: translateY(110vh) rotate(360deg); }
+        }
+        .falling-block {
+            position: absolute;
+            width: 20px; height: 20px;
+            opacity: 0.15;
+            animation: fall 15s linear infinite;
+            border: 2px solid var(--brown-text);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .img-natural {
+            display: block;
+            width: 100%;
+            height: auto;
         }
     </style>
 </head>
 <body class="antialiased overflow-x-hidden">
 
+    <!-- Background Animation Layer -->
+    <div class="fixed inset-0 z-[-2] overflow-hidden" id="blockBg"></div>
+
     <!-- Navigation -->
     <nav class="p-6 border-b-8 border-double border-brown-text bg-white sticky top-0 z-50">
         <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
             <div class="flex items-center gap-4">
-                <img src="images/logo.png" alt="DDCT Logo" class="h-12 w-12 img-natural gold-frame !p-0 !border-4 !outline-2">
+                <!-- TOP LEFT LOGO: BIG & NO FRAME -->
+                <img src="images/logo.png" alt="DDCT Logo" class="h-24 w-24 img-natural">
                 <span class="font-bold text-brown-text text-sm tracking-tighter uppercase">DDCT World</span>
             </div>
             
             <div class="flex gap-8 font-bold text-xs uppercase tracking-widest">
                 <a href="https://dexscreener.com/solana/ckmywfrnkcngawbvgf9oizjudamcaxwjwtzish6j81ue" target="_blank" class="hover:text-orange-400 transition text-brown-text">Chart</a>
-                <a href="https://x.com/i/communities/2012789256092106934" target="_blank" class="hover:text-orange-400 transition text-brown-text">Community</a>
+                <!-- ORANGE TEXT FOR X COMMUNITY NAV -->
+                <a href="https://x.com/i/communities/2012789256092106934" target="_blank" class="text-orange-400 hover:brightness-110 transition">Community</a>
                 <a href="#history" class="hover:text-orange-400 transition text-brown-text">History</a>
             </div>
 
@@ -140,13 +154,13 @@
     </nav>
 
     <!-- Hero Section -->
-    <header class="max-w-7xl mx-auto px-6 py-32 text-center relative">
+    <header class="max-w-7xl mx-auto px-6 py-40 text-center relative">
         
-        <!-- LARGE WATERMARK LOGO BEHIND TITLE -->
+        <!-- LARGE WATERMARK LOGO -->
         <img src="images/logo.png" alt="" class="bg-logo-behind">
 
         <div class="relative z-10">
-            <p class="font-bold text-stone-400 text-xs mb-6 tracking-[0.4em] uppercase">Stage 1: The Wooden Legacy</p>
+            <p class="font-bold text-stone-400 text-xs mb-6 tracking-[0.4em] uppercase">Player 1: The Wooden Legacy</p>
             <h1 class="cartoon-header text-6xl md:text-9xl mb-12">
                 DOG DICK <br>
                 <span style="color: #fff; -webkit-text-stroke: 2px var(--brown-text); text-shadow: 6px 6px 0px var(--brown-text);">COFFEE TABLE</span>
@@ -160,20 +174,20 @@
             </div>
 
             <div class="flex flex-col sm:flex-row justify-center gap-10">
-                <a href="https://dexscreener.com/solana/ckmywfrnkcngawbvgf9oizjudamcaxwjwtzish6j81ue" target="_blank" class="btn-cartoon uppercase">
+                <a href="https://dexscreener.com/solana/ckmywfrnkcngawbvgf9oizjudamcaxwjwtzish6j81ue" target="_blank" class="btn-cartoon">
                     View Chart 📈
                 </a>
-                <a href="https://x.com/i/communities/2012789256092106934" target="_blank" class="btn-cartoon !bg-white !text-brown-text uppercase">
+                <!-- ORANGE TEXT FOR JOIN X BUTTON -->
+                <a href="https://x.com/i/communities/2012789256092106934" target="_blank" class="btn-cartoon !bg-white !text-orange-400">
                     Join The X 🦴
                 </a>
             </div>
         </div>
 
-        <!-- Hero Exhibit Image -->
         <div class="max-w-2xl mx-auto mt-24 relative z-10">
             <div class="gold-frame inline-block rotate-[-1deg]">
-                <img src="images/hero-table.png" alt="Historical Artifact" class="img-natural">
-                <div class="mt-6 font-bold text-xs border-t-2 border-dashed border-brown-text pt-6 uppercase tracking-widest">
+                <img src="images/hero-table.png" alt="Artifact" class="img-natural">
+                <div class="mt-6 font-bold text-xs border-t-2 border-dashed border-brown-text pt-6 uppercase tracking-widest text-brown-text">
                     Exhibit: The Original Commission
                 </div>
             </div>
@@ -187,7 +201,7 @@
         <div class="max-w-6xl mx-auto">
             <div class="grid md:grid-cols-2 gap-20 items-center">
                 <div class="gold-frame rotate-1">
-                    <img src="images/lore-archive.jpg" alt="Historical Forum Archive" class="img-natural">
+                    <img src="images/lore-archive.jpg" alt="Forum Archive" class="img-natural">
                 </div>
                 <div>
                     <h2 class="cartoon-header text-5xl mb-8">The Story</h2>
@@ -206,11 +220,11 @@
 
     <div class="divider-bar"></div>
 
-    <!-- Collection Gallery -->
+    <!-- Gallery Section -->
     <section class="max-w-7xl mx-auto px-6 py-24">
         <div class="text-center mb-20">
-            <h2 class="cartoon-header text-6xl mb-4">The Wood Pile</h2>
-            <p class="font-bold text-stone-400 tracking-[0.2em] uppercase">Historical Evidence</p>
+            <h2 class="cartoon-header text-6xl mb-4">Dog Dick Collection</h2>
+            <p class="font-bold text-stone-400 tracking-[0.2em] uppercase">Visual Evidence</p>
         </div>
         <div class="grid grid-cols-2 lg:grid-cols-4 gap-10">
             <div class="gold-frame rotate-[-2deg]">
@@ -230,18 +244,18 @@
 
     <!-- Footer -->
     <footer class="bg-white border-t-8 border-double border-brown-text p-20 text-center">
-        <!-- REPLACED "FINISH!" WITH "COMMUNITY TAKEOVER" AS REQUESTED -->
         <div class="cartoon-header text-2xl md:text-4xl mb-8 tracking-widest uppercase">Community Takeover</div>
         
         <p class="text-md font-black opacity-80 mb-12 max-w-2xl mx-auto uppercase tracking-widest leading-loose">
-            $DDCT is a community project inspired by internet history. <br>No financial value. Pure Buttcoin lore.
+            $DDCT is a community project inspired by internet history. <br>No financial value. 100% Wood.
         </p>
 
         <div class="flex justify-center gap-16 mb-20">
             <a href="https://dexscreener.com/solana/ckmywfrnkcngawbvgf9oizjudamcaxwjwtzish6j81ue" target="_blank" class="text-5xl hover:scale-110 transition text-brown-text hover:text-orange-400">
                 <i class="fa-solid fa-chart-line"></i>
             </a>
-            <a href="https://x.com/i/communities/2012789256092106934" target="_blank" class="text-5xl hover:scale-110 transition text-brown-text hover:text-orange-400">
+            <!-- FOOTER X ICON ORANGE -->
+            <a href="https://x.com/i/communities/2012789256092106934" target="_blank" class="text-5xl hover:scale-110 transition text-orange-400 hover:brightness-110">
                 <i class="fa-brands fa-x-twitter"></i>
             </a>
         </div>
@@ -249,5 +263,22 @@
         <p class="font-bold text-brown-text opacity-40 uppercase text-[10px] tracking-tighter">© 2026 The Wooden Table Foundation</p>
     </footer>
 
+    <!-- Background Logic -->
+    <script>
+        const colors = ['#FFB347', '#2d1b0e', '#D4AF37', '#ffffff'];
+        const bg = document.getElementById('blockBg');
+        
+        for(let i=0; i<35; i++) {
+            const block = document.createElement('div');
+            block.className = 'falling-block';
+            block.style.left = Math.random() * 100 + 'vw';
+            block.style.background = colors[Math.floor(Math.random() * colors.length)];
+            block.style.animationDelay = Math.random() * 15 + 's';
+            block.style.width = (Math.random() * 15 + 15) + 'px';
+            block.style.height = block.style.width;
+            block.style.borderRadius = Math.random() > 0.5 ? '4px' : '50%';
+            bg.appendChild(block);
+        }
+    </script>
 </body>
 </html>
